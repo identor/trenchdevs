@@ -18,9 +18,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - uses: docker/build-push-action@v1.1.1
         with:
-          repository: trenchdevs/trenchdevs
           tags: trenchdevs/trenchdevs:latest
-          tag_with_ref: true
-          tag_with_sha: true
           push: true
 
