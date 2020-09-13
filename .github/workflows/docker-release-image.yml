@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    tags: 'v*'
+    branches: master
+env:
+  BUILD_ID: $(date +%s)
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: docker/build-push-action@v1.1.1
+      with:
+        tags: |
+          trenchdevs/trenchdevs:${BUILD_ID}
+          trenchdevs/trenchdevs:latest
+        tag_with_ref: true
+        tag_with_sha: true
+        push: true
