@@ -3,7 +3,7 @@ FROM lorisleiva/laravel-docker:7.4 AS builder
 WORKDIR /tmp
 ADD . .
 
-RUN composer install && npm ci
+RUN composer install --no-progress && npm ci
 
 FROM php:7.4-apache AS runtime
 WORKDIR /var/www/html
